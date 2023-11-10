@@ -18,7 +18,7 @@ def process_files(root, files, pair_conditions, dirty_files, valid_pairs, lock, 
         if os.path.splitext(file)[1].lower() == '.mp3':
             file_path = os.path.normpath(os.path.join(root, file))
             progress_bar.set_postfix(file=file, refresh=True, count="")
-            scanned_files_count.increment()  # Increment the scanned files counter
+            scanned_files_count.increment()
             for condition in pair_conditions:
                 clean_tag = condition.get("clean_condition")
                 dirty_tag = condition.get("dirty_condition")
@@ -31,7 +31,7 @@ def process_files(root, files, pair_conditions, dirty_files, valid_pairs, lock, 
                                         valid_pairs.append((file_path, dirty_file))
                                         progress_bar.update(1)
                                         log_to_file(log_file, f"Znaleziono parę plików: {file_path}, {dirty_file}", config)
-                                        total_pairs_found += 1  # Increment the global variable
+                                        total_pairs_found += 1
                                 break
 
 def check_pair_conditions(file_path, dirty_file, pair_conditions):
@@ -70,7 +70,7 @@ def remove_files_based_on_condition(output_file, remove_condition, autoremove=Fa
                 try:
                     if os.path.exists(file_path):
                         os.remove(file_path)
-                        total_files_removed += 1  # Increment the global variable
+                        total_files_removed += 1
                         print(f"Usunięto plik: {file_path}")
                         log_to_file(log_file, f"Usunięto plik: {file_path}", config)
                     else:
@@ -91,7 +91,7 @@ def remove_files_based_on_condition(output_file, remove_condition, autoremove=Fa
                     try:
                         if os.path.exists(file_path):
                             os.remove(file_path)
-                            total_files_removed += 1  # Increment the global variable
+                            total_files_removed += 1
                             print(f"Usunięto plik: {file_path}")
                             log_to_file(log_file, f"Usunięto plik: {file_path}", config)
                         else:
@@ -123,7 +123,7 @@ def find_and_save_files(base_folder, output_file, pair_conditions, use_threadpoo
         max_workers = multiprocessing.cpu_count()
 
     start_time = time.time()
-    scanned_files_count = Counter()  # Initialize the scanned files counter
+    scanned_files_count = Counter()
 
     with tqdm(total=buffer_size) as progress_bar:
         with executor_class(max_workers=max_workers) as executor:
