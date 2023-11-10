@@ -1,49 +1,86 @@
-FCDJ - File Cloner DJPools Detector
-Description
-FCDJ (File Cloner DJPools Detector) is a Python script designed to search for pairs of music files in a given directory based on specified conditions. It can identify clean and dirty versions of music files and perform various operations, including logging, removing, and autoremoving files.
 
-Usage
-Prerequisites
-Python 3.x
-Required Python packages (install using pip install -r requirements.txt):
-tqdm
-Configuration
-Create a configuration file (e.g., config.cfg) to customize the script's behavior.
-Modify the configuration parameters as needed. See the provided config.cfg file for an example.
-Command Line Options
--base BASE: Specify the base folder for searching.
--output OUTPUT: Specify the output file to store valid pairs.
--config CONFIG: Specify the path to the config file.
--help: Show help message.
-Example Usage
-bash
+<b>FCDJ - File Cloner DJPools Detector 0.1 by DJ PD</b>
+<br>
+Overview
+<br>
+<br>
+<b>
+FCDJ is a script designed to detect pairs of files within a specified music library. It identifies clean and dirty versions of the same track based on user-defined conditions and can optionally remove the identified files.</b>
+<br>
+<br>
+
+<b>Features</b><br>
+<br>Parallel Processing: Utilizes multi-threading or multi-processing for efficient file processing.
+<br>Configurable: Easily configurable through a dedicated configuration file (config.cfg).
+<br>Logging: Provides logging functionality to record operations and results.
+<br>
+<br>
+<br><b>Prerequisites</b>
+<br>
+Python 3.7 or higher
+<br>
+<br>
+<b>Installation</b>
+Clone the repository:<br>
+<br>
 Copy code
-python fcdj.py -config config.cfg
-Configuration File (config.cfg)
-The configuration file allows you to customize various aspects of the script. Below are the key sections:
+<br>
+git clone https://github.com/yourusername/fcdj.git
+<br>
+cd fcdj
+<br>
+Install the required packages:
+<br>
+pip install -r requirements.txt
+<br>
+<br>
+<b>Usage</b>
+<br>python fcdj.py -config config.cfg<br>
+<br>
+<b>Command-line Arguments</b>
+<br>
+-base: Specify the base folder for searching (optional).<br>
+-output: Specify the output file to store valid pairs (optional).<br>
+-config: Specify the path to the config file (required).<br>
+-help: Show the help message.<br><br>
+<b>Configuration (config.cfg)</b>
+<br>
+<br>
+The configuration file allows you to customize the behavior of the script.<br><br><br>
 
 [GENERAL]
-use_threadorpoolexecutor: Enable/disable the use of thread or pool executor.
-buffer_size: Set the buffer size for processing files.
-remove: Enable/disable file removal.
-autoremove: Enable/disable autoremoval.
+<br>
+use_threadorpoolexecutor: Use multi-threading or multi-processing. Set to true for multi-threading, false for multi-processing.
+<br>
+buffer_size: Number of file pairs to buffer during processing.
+<br>
+remove: Enable/disable file removal based on conditions.
+<br>
+autoremove: Automatically remove files without user confirmation.
+<br>
 log: Enable/disable logging.
-[BASE]
-path: Specify the base folder with the music library.
-[OUTPUT]
-output_file: Specify the output file path to store valid pairs.
-[PAIRx] (Replace x with a number)
-clean_condition: Specify the clean condition for file matching.
-dirty_condition: Specify the dirty condition for file matching.
-[WHATAUTOREMOVE]
-Specify conditions for autoremoval.
-[LOG]
-log_file: Specify the path for the log file.
-Script Details
-Script File (fcdj.py)
-The script uses Python and various libraries for parallel processing and file manipulation.
-The main functionality includes searching for pairs of music files, logging, and removing files based on specified conditions.
-License
-This script is licensed under the MIT License.
+<br>
+<br>
+[BASE]<br>
+path: Path to the base folder containing the music library.<br>
+[OUTPUT]<br>
+output_file: Path to the output file to store valid pairs.<br>
+[PAIR1], [PAIR2], ...<br>
+clean_condition: Clean file identifier condition.<br>
+dirty_condition: Dirty file identifier condition.<br><br>
+[WHATAUTOREMOVE]<br>
+Specify conditions for files to be automatically removed.<br><br>
 
-Make sure to replace the placeholders like LICENSE with the appropriate information. You may also want to include a license file if you haven't already.
+[LOG]<br>
+log_file: Path to the log file.<br>
+Examples<br>
+For detailed examples, refer to the provided config.cfg file.<br>
+<br>
+License<br>
+This project is licensed under the MIT License.<br>
+
+Author<br>
+DJPD<br>
+<br>
+requirements.txt
+tqdm==4.62.3
