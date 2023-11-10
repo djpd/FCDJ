@@ -25,7 +25,7 @@ Clone the repository:<br>
 <br>
 Copy code
 <br>
-git clone https://github.com/yourusername/fcdj.git
+git clone https://github.com/djpd/fcdj.git
 <br>
 cd fcdj
 <br>
